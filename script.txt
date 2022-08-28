@@ -1,0 +1,20 @@
+
+#!/bin/bash
+
+mkdir /publico
+mkdir /adm
+
+groupadd GRP_ADM
+groupadd GRP_PUB
+
+useradd maria -c "Maria dos anjos" -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd joao -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+
+useradd pedro -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd antonio -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+
+chown root:GRP_ADM /adm
+chown root:GRP_ADM /publico
+
+chmod 770 /adm
+chmod 777 /publico
